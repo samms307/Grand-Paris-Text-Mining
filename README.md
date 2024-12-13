@@ -1,17 +1,3 @@
-# **Presentation des données**
-
-Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, menée par la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris, des citoyens et des collectivités ont soumis des idées pour construire une métropole plus connectée, durable et inclusive.
-
-Ces idées, réparties en **5 grandes thématiques** :
-- Transition écologique et Mobilités  
-- Culture et Identité  
-- Logement et Aménagement  
-- Rayonnement  
-- Lutte contre les inégalités  
-
-Le jeu de données correspondant contient 362 propositions, chacune décrite par 21 attributs, incluant la date de publication, l'objectif, et une description textuelle détaillée.
-
-
 # **Présentation des Données**
 
 Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, organisée par la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris, des citoyens et des collectivités ont soumis des idées innovantes pour transformer la métropole en un espace plus connecté, durable et inclusif.
