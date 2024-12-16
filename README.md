@@ -1,22 +1,69 @@
-# **Présentation des Données**
+# **Projet de Traitement des Propositions pour la Métropole du Grand Paris**
 
-Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, organisée par la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris, des citoyens et des collectivités ont soumis des idées innovantes pour transformer la métropole en un espace plus connecté, durable et inclusif.
+## **Contexte**
+Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, lancée par la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris, des citoyens et des collectivités ont soumis des idées innovantes pour transformer la métropole en un espace plus connecté, durable et inclusif. Ces propositions ont été regroupées en **5 grandes thématiques** :
 
-Les propositions idées sont regroupées en **5 grandes thématiques** :
-1. **Transition écologique et Mobilités** : Solutions pour réduire l'empreinte écologique et améliorer les transports.  
-2. **Culture et Identité** : Initiatives visant à promouvoir le patrimoine culturel et l’identité locale.  
-3. **Logement et Aménagement** : Projets pour améliorer l’accès au logement et repenser l’espace urbain.  
-4. **Rayonnement** : Idées pour accroître l’attractivité et le rayonnement international de la métropole.  
-5. **Lutte contre les inégalités** : Actions pour réduire les disparités économiques et sociales.
+1. **Transition écologique et Mobilités**
+2. **Culture et Identité**
+3. **Logement et Aménagement**
+4. **Rayonnement**
+5. **Lutte contre les inégalités**
 
+Les propositions sont collectées dans un jeu de données comprenant **362 propositions** et **21 attributs**. Parmi ces attributs, on retrouve :
+- **Date de publication**
+- **Objectif** (résultats attendus)
+- **Description textuelle** (détails des propositions)
+
+## **Objectifs du Projet**
+
+L'objectif principal de ce projet est d'explorer et d'exploiter le potentiel de ce jeu de données en appliquant des techniques d'analyse avancée.
+
+### **Phase 1 : Extraction des Termes Pertinents**
+Cette phase conciste d'appliquer une classification automatique sur le contenu des idées . A l’issus du résultat nous devrions trouver les termes les plus 
+pertinents/ représentatifs selon une thématique. 
+
+Du coup l'idée va etre de se conconcentre sur des représentation vectorielle de mots (comme TF-idf ,Word2Vec ou embeddings contextuels) puis appliuequer un modèle supervisé ou non supervisé pour repérer les mots discriminants.
+
+
+Dans un premier temps, nous allons extraire automatiquement les termes clés et les concepts les plus pertinents de chaque proposition en fonction de sa thématique. Nous avons choisi d'utiliser **PySpark** et **Spark NLP** plutôt que des méthodes plus simples comme **TF-IDF**, **Word2Vec**, **GloVe** ou **BERT** pour plusieurs raisons techniques :
+
+1. **Problèmes avec TF-IDF** :  
+   Le modèle **TF-IDF** calcule l'importance des termes en fonction de leur fréquence dans chaque document par rapport à l'ensemble du corpus. Cependant, il ne prend pas en compte le contexte sémantique des mots ni leur relation avec la thématique de chaque proposition. Cela pourrait conduire à l'extraction de termes peu pertinents ou non représentatifs des thématiques principales (par exemple, "énergie" dans le cadre de la mobilité).
+
+2. **Limitations de Word2Vec, GloVe et BERT** :  
+   - **Word2Vec** et **GloVe** génèrent des vecteurs de mots en fonction de leur contexte global, mais ne captent pas toujours les nuances spécifiques d'un texte lié à une thématique particulière. De plus, ils ne sont pas directement conçus pour extraire les termes les plus pertinents pour un thème donné, ce qui rend leur utilisation moins efficace dans ce contexte.
+   - **BERT** est très performant pour des tâches contextuelles complexes, mais son utilisation pour l'extraction de termes clés nécessite un fine-tuning ou un prétraitement supplémentaire. De plus, il peut être coûteux en termes de ressources computationnelles, ce qui n'est pas optimal pour un projet à grande échelle comme celui-ci.
+
+3. **Pourquoi PySpark et Spark NLP ?**  
+   Ces outils sont spécifiquement conçus pour traiter de grandes quantités de données tout en permettant une analyse sémantique plus fine. Par exemple, **Spark NLP** offre des fonctionnalités comme la **Reconnaissance d'Entités Nommées (NER)** et l'analyse syntaxique, qui permettent de capturer non seulement les termes pertinents mais aussi les entités et les relations spécifiques à chaque thématique. De plus, **PySpark** permet d'exécuter ces analyses à grande échelle, ce qui est essentiel pour traiter les 362 propositions du jeu de données.
+
+Cette approche garantit une extraction plus précise et adaptée aux thématiques spécifiques des propositions, tout en optimisant les ressources et le temps de traitement.
+
+
+----------
+
+### **Phase 1 : Extraction des Termes Pertinents**
+Dans un premier temps, nous allons extraire automatiquement les termes clés et les concepts les plus pertinents de chaque proposition en fonction de sa thématique. Pour ce faire, nous utiliserons **PySpark** et **Spark NLP**, deux outils puissants permettant de traiter efficacement des volumes de données importants et d'exécuter des analyses textuelles de manière distribuée.
+
+### **Phase 2 : Résumé Automatique des Propositions**
+Dans un second temps, nous allons appliquer des techniques de résumé automatique pour condenser les descriptions textuelles en résumés courts. Deux méthodes seront explorées :
+1. **Méthode extractive** : Sélection des phrases les plus représentatives des propositions.
+2. **Méthode abstractive** : Génération de résumés en reformulant les idées principales de manière plus concise.
+
+
+---------------------
 ### **Structure des Données**
 Le jeu de données comprend **362 propositions**, chacune décrite par **21 attributs**. Ces attributs incluent notamment :
 - **Date de publication** : Pour situer chronologiquement les idées.  
 - **Objectif** : Une indication des résultats attendus.  
 - **Description textuelle** : Une explication détaillée de chaque proposition.  
 
-### **Enjeu pour la Data Science**
-Ce jeu de données constitue une opportunité d’appliquer des techniques avancées d’analyse textuelle pour :
+## **Objectif**
+Ce jeu de données constitue une opportunité d’appliquer des techniques avancées d’analyse textuelle et dapprendre de nouvelle outil :
+
+Dans un premier temps va etre de cherchez les termes issus de ces descriptions textuelles qui sont les plus pertinents pour chaque thématique de maniere automatique Cela se fera a l'aide pypsark et spark nlp 
+Ensuite dans un second temps va etre de faire des résumer f'information selon deux méthodes 
+
 - Extraire des mots-clés et tendances émergentes.  
 - Classifier les propositions selon les thématiques principales.  
 - Fournir une vision globale et exploitable pour guider les prises de décision.
