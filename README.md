@@ -19,12 +19,26 @@ Les propositions sont collectées dans un jeu de données comprenant **362 propo
 L'objectif principal de ce projet est d'explorer et d'exploiter le potentiel de ce jeu de données en appliquant des techniques d'analyse avancée.
 
 ### **Phase 1 : Extraction des Termes Pertinents**
-Cette phase conciste d'appliquer une classification automatique sur le contenu des idées . A l’issus du résultat nous devrions trouver les termes les plus 
-pertinents/ représentatifs selon une thématique. 
 
-Du coup l'idée va etre de se conconcentre sur des représentation vectorielle de mots (comme TF-idf ,Word2Vec ou embeddings contextuels) puis appliuequer un modèle supervisé ou non supervisé pour repérer les mots discriminants.
+L’objectif principal de cette phase est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus pertinents et représentatifs pour chaque thématique. En d'autres termes, il s'agit de repérer automatiquement les mots ou expressions qui **caractérisent** efficacement chaque thématique, en s'appuyant sur les descriptions textuelles des propositions.
 
+#### **Étapes Méthodologiques**
 
+1. **Exploration des techniques de vectorisation**  
+   Nous examinerons plusieurs méthodes pour représenter les textes sous forme vectorielle, notamment :  
+   - **TF-IDF**, pour capturer la fréquence et l’importance relative des termes.  
+   - **Word2Vec** et **GloVe**, pour intégrer des relations sémantiques entre les mots.  
+   - **Embeddings contextuels comme BERT**, pour modéliser les nuances et les contextes spécifiques des termes.
+
+2. **Combinaison des approches non supervisées et supervisées**  
+   - **Non supervisé (exploration) :**  
+     Les techniques comme le clustering ou l’analyse thématique (exemple : LDA) seront utilisées pour identifier des regroupements naturels dans les données et extraire les termes fréquents ou récurrents dans chaque groupe. Cette étape permet de fournir une vue d’ensemble des thématiques et de détecter les termes généraux liés à chaque catégorie.
+    Elle offre une analyse globale des données en regroupant les idées similaires, mais produit des résultats parfois bruts ou trop larges. Par exemple, certains termes fréquents dans un cluster peuvent être peu spécifiques ou apparaître dans plusieurs thématiques.
+
+   - **Supervisé (affinage) :**  
+     Les modèles supervisés, comme les SVM, les réseaux de neurones ou la régression logistique, exploiteront les données étiquetées (les thématiques connues) pour attribuer un score d'importance aux termes. Ces modèles permettront d’identifier les mots ou expressions les plus discriminants, c’est-à-dire ceux qui différencient efficacement une thématique d’une autre.
+
+----------------
 Dans un premier temps, nous allons extraire automatiquement les termes clés et les concepts les plus pertinents de chaque proposition en fonction de sa thématique. Nous avons choisi d'utiliser **PySpark** et **Spark NLP** plutôt que des méthodes plus simples comme **TF-IDF**, **Word2Vec**, **GloVe** ou **BERT** pour plusieurs raisons techniques :
 
 1. **Problèmes avec TF-IDF** :  
