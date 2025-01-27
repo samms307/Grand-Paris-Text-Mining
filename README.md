@@ -18,10 +18,9 @@ Les propositions ont été collectées dans un jeu de données comprenant **362 
 - **Description textuelle** (détails des proposition
 
 
+# **Objectifs du Projet**
+L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus pertinents et représentatifs pour chaque thématique. 
 
-## **Objectifs du Projet**
-
-L'objectif principal de ce projet est d'explorer et d'exploiter le potentiel de ce jeu de données en appliquant des techniques d'analyse avancée.
 
 ### **Phase 1 : Extraction des Termes Pertinents**
 
