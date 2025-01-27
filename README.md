@@ -11,7 +11,7 @@ Ces propositions d'idées ont éte regroupées en **5 grandes thématiques**:
 4. **Rayonnement**
 5. **Lutte contre les inégalités**
 
-## **Jeu de données**
+### **Jeu de données**
 Les propositions ont été collectées dans un jeu de données comprenant **362 propositions** et **21 attributs**. Parmi ces attributs on trouve :
 - **Date de publication**
 - **Objectif** (résultats attendus)
@@ -19,20 +19,70 @@ Les propositions ont été collectées dans un jeu de données comprenant **362 
 
 
 # **Objectifs du Projet**
-L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus pertinents et représentatifs pour chaque thématique. 
+L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus représentatifs pour chaque thématique. 
 
 
-### **Phase 1 : Extraction des Termes Pertinents**
+# **Étapes Méthodologiques**  
 
-L’objectif principal de cette phase est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus pertinents et représentatifs pour chaque thématique. En d'autres termes, il s'agit de repérer automatiquement les mots ou expressions qui **caractérisent** efficacement chaque thématique, en s'appuyant sur les descriptions textuelles des propositions.
+## 1. Exploration des techniques de vectorisation
 
-#### **Étapes Méthodologiques**
+Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
+
+### **1.1 Modèle de sac de mots statistique : TF-IDF avec et sans LSA**  
+Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
+
+### **1.2 Modèles basés sur les embeddings et réseaux de neurones profonds**  
+Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :  
+
+#### **Word Embeddings**  
+- **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.  
+- **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
+
+#### **Document/Sentence Embeddings**  
+- **Agrégation par la moyenne des word embeddings** : Cette méthode calcule la moyenne des vecteurs des mots d'une proposition entière, offrant une représentation globale.  
+- **USE (Universal Sentence Encoder)** : Génére des embeddings pour des phrases entières, capturant ainsi le sens global d'une proposition.
+
+
+
+
+
+a moyenne des word embding uilisé precedament
+    - USE qui donne des phrases
+
+Nous avons également exploré des modèles d'embeddings statiques et dynamiques comme **Word2Vec**, **BERT**, et **USE**. Ces modèles ont permis de capturer des relations sémantiques plus profondes entre les mots et les propositions. Les performances de ces modèles sont comparées dans le [notebook](./notebook/comparaison_modeles.ipynb).
+
 
 1. **Exploration des techniques de vectorisation**  
-   Nous examinerons plusieurs méthodes pour représenter les textes sous forme vectorielle, notamment :  
-   - **TF-IDF**, pour capturer la fréquence et l’importance relative des termes.  
-   - **Word2Vec** et **GloVe**, pour intégrer des relations sémantiques entre les mots.  
-   - **Embeddings contextuels comme BERT**, pour modéliser les nuances et les contextes spécifiques des termes.
+Nous avons examiné plusieurs méthodes pour représenter les propositions d'idées sous forme vectorielle afin d'utiliser nos algorithmes d’apprentissage automatique :
+
+1.1 Modèle de sac de mots statistique : TF-IDF (avec et sans réduction par LSA)
+
+Pour analyser et classifier les propositions d’idées, nous explorons différentes méthodes de représentation textuelle. Ces méthodes transforment les descriptions textuelles en vecteurs, permettant leur traitement par des algorithmes d’apprentissage automatique. 
+Tout les modeles pre entrainé ont ete choisi pour la langue française 
+
+1.1 Modèle de sac de mots statistique : TF-IDF (avec et sans réduction par LSA)
+1.2 Modèles basés sur les embeddings : Nous utilisons le modèle pré-entraîné **"w2v_cc_300d"** concus pour la langue francaise, qui génère des embeddings de 300 dimensions.
+Nous allons explorer et comparer différentes méthodes pour transformer du texte en représentations vectorielles adaptées à des tâches NLP afin de trouver la meilleur represnttion pour un clustering afin d'extraire automatique les termes
+
+Méthodes couvertes :
+
+2 méthodes de représentation :
+ Nous examinerons plusieurs méthodes pour représenter les propositions d'idées sous forme vectorielle notamment :  
+• le word embedding
+(ou « plongement de mots »)
+• le doc embedding
+(ou « plongement de documents »)
+
+TF-IDF (avec et sans réduction par LSA)
+Word2Vec (pré-entraîné, moyenne des vecteurs)
+BERT (pré-entraîné, agrégation des embeddings)
+USE (Universal Sentence Encoder via TensorFlow Hub)
+  
+
+
+   ### **Phase 1 : Extraction des Termes Pertinents**
+
+L’objectif principal de cette phase est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus pertinents et représentatifs pour chaque thématique. En d'autres termes, il s'agit de repérer automatiquement les mots ou expressions qui **caractérisent** efficacement chaque thématique, en s'appuyant sur les descriptions textuelles des propositions.
 
 2. **Combinaison des approches non supervisées et supervisées**  
    - **Non supervisé (exploration) :**  
