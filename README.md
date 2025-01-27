@@ -1,7 +1,9 @@
-# **Projet de Traitement des Propositions pour la Métropole du Grand Paris**
+# **Analyse et Classification des Propositions pour la Métropole du Grand Paris**
 
 ## **Contexte**
-Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, lancée par la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris, des citoyens et des collectivités ont soumis des idées innovantes pour transformer la métropole en un espace plus connecté, durable et inclusif. Ces propositions ont été regroupées en **5 grandes thématiques** :
+Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris a sollicité la participation des citoyens et collectivités. Ces derniers ont `soumis des idées innovantes` pour transformer la métropole en un espace plus connecté durable et inclusif. 
+
+Ces propositions d'idées ont éte regroupées en **5 grandes thématiques**:
 
 1. **Transition écologique et Mobilités**
 2. **Culture et Identité**
@@ -9,10 +11,13 @@ Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, lanc
 4. **Rayonnement**
 5. **Lutte contre les inégalités**
 
-Les propositions sont collectées dans un jeu de données comprenant **362 propositions** et **21 attributs**. Parmi ces attributs, on retrouve :
+## **Jeu de données**
+Les propositions ont été collectées dans un jeu de données comprenant **362 propositions** et **21 attributs**. Parmi ces attributs on trouve :
 - **Date de publication**
 - **Objectif** (résultats attendus)
-- **Description textuelle** (détails des propositions)
+- **Description textuelle** (détails des proposition
+
+
 
 ## **Objectifs du Projet**
 
