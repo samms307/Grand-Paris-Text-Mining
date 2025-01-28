@@ -39,29 +39,18 @@ Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spar
 # 📈 **Étapes Clés du Projet**
 
 ### **1️⃣ Prétraitement des données textuelles**
-Pour préparer les données textuelles à la vectorisation nous avons utilisé la bibliothèque Spark NLP développée par John Snow Labs. Nous avons construit un `pipeline NLP composé de plusieurs annotateurs` dont le principal objectif est de nettoyer la variable texte avant la vectorisation. Les étapes principales incluent :
+Pour préparer les données textuelles à la vectorisation nous avons utilisé la bibliothèque **Spark NLP** développée par **John Snow Labs**. Nous avons construit un `pipeline NLP composé de plusieurs annotateurs` dont le principal objectif est de nettoyer la variable texte avant la vectorisation.  
+**Les étapes principales incluent** :  
 
-Ainsi l’idée va être dans un premier temps de nettoyer nos textes dans nos données. Ensuite 
-nous transformerons nos textes en vecteur numérique afin qu’ils soient utilisables par des 
-algorithmes.
-Pour mettre en place l’ensemble de ce prétraitement, nous appliquons les opérations de 
-traitement du langage naturel (NLP) via à la bibliothèque SPARK NLP développée par John 
-Snow Labs NLP. Cela nous permettra de réaliser la normalisation, l’atomisation, la 
-suppression des mots inutiles, le retour à la racine des mots et enfin de représenter le texte 
-sous forme de vecteurs numériques en essayant différentes familles de modèles vectoriels 
-de texte afin de trouver la meilleure combinaison entre le bon modèle vectoriels de texte 
-adéquate par rapport aux données et une bonne méthode de classification automatique.
-L’enchainement de ces étapes se fera à l’aide de deux pipelines détaillés ci-dessous via la 
-bibliothèque SPARK NLP contenant soit des annotateurs ou/et soit des transformateurs. On 
-rappel un pipeline a pour but d'assembler plusieurs étapes qui peuvent être validées 
-ensemble tout en définissant différents paramètres
+- **Normalisation et Nettoyage** : Uniformiser le texte en transformant les mots en minuscules en supprimant les accents ainsi la ponctuation et les caractères spéciaux non pertinents pour l'analyse.  
+- **Tokenisation** : Découpage du texte en unités de base de mots dans notre cas.  
+- **Lemmatisation** : Réduction des mots à leur forme canonique ou racine (par exemple, "mangeant" devient "manger").  
+- **Correction orthographique (SpellChecker)** : Correction des fautes d'orthographe dans les textes. Nous avons enrichi cette étape avec un fichier texte personnalisé nommé `correction_mots` contenant des mots spécifiques à corriger.  
+- **Suppression des Stop Words** : Élimination des mots courants qui n'apportent pas de valeur sémantique significative. Cette étape a également été enrichie avec un fichier texte nommé `french`, contenant des mots supplémentaires à supprimer.  
 
-- **Tokenisation** : Division des propositions en mots individuels.  
-- **Lemmatisation** : Réduction des mots à leur forme canonique.  
-- **Filtrage des stopwords** : Suppression des mots fréquents peu informatifs.  
-- **Nettoyage** : Élimination des caractères spéciaux et du bruit textuel.  
 
-Ces prétraitements ont permis de normaliser les données avant leur vectorisation avec des modèles comme **TF-IDF**, **BERT** et **USE**.
+
+
 
 
 Dans cette étape, l’objectif principal était de préparer les données et de garantir qu'aucune **fuite de données** (data leakage) ne se produise. Voici les actions effectuées :
