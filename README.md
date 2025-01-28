@@ -23,17 +23,15 @@ L’objectif est d’appliquer une **classification automatique** sur le contenu
 
 
 ### **Outils utilisés**
-- **PySpark** est une interface Python d'Apache Spark un framework open-source conçu pour le traitement distribué de grandes quantités de données.  
-**Notre objectifs** :  
-  - Manipuler et analyser des données à l'aide de Spark SQL et des DataFrames.  
-  - Appliquer des algorithmes de machine learning via la bibliothèque MLlib.  
+- **PySpark** est une interface Python d'Apache Spark un framework open-source conçu pour le traitement distribué de grandes quantités de données. **Notre objectifs** :  
+   - Manipuler et analyser des données à l'aide de Spark SQL et des DataFrames.  
+   - Appliquer des algorithmes de machine learning via la bibliothèque MLlib.  
 
 - **Spark NLP**  
-Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spark et pour optimisée pour les pipelines scalables et le traitement parallèle.  
-**Notre objectifs** :  
-  - Prétraiter et analyser des textes (tokenisation, lemmatisation, annotation).  
-  - Construire des pipelines NLP performants et adaptés aux grandes volumétries.  
-  - Exploiter des modèles NLP pré-entraînés pour des tâches spécifiques.  
+Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spark et pour optimisée pour les pipelines scalables et le traitement parallèle.  **Notre objectifs** :  
+   - Prétraiter et analyser des textes (tokenisation, lemmatisation, annotation).  
+   - Construire des pipelines NLP performants et adaptés aux grandes volumétries.  
+   - Exploiter des modèles NLP pré-entraînés pour des tâches spécifiques.  
 
 
 
