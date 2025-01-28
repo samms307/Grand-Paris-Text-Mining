@@ -33,7 +33,7 @@ Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spar
    - Construire des pipelines NLP performants et adaptés aux grandes volumétries.  
    - Exploiter des modèles NLP pré-entraînés pour des tâches spécifiques.  
 
-
+---------------------
 
 
 # 📈 **Étapes Clés du Projet**
@@ -56,15 +56,14 @@ Ces étapes de prétraitement sont essentielles pour améliorer la qualité des 
 L'objectif ici est de transformer les propositions d'idées en données numériques afin de pouvoir les représenter graphiquement ou les analyser avec des modèles de machine learning. 
 Pour ce faire nous utilisons `les transformeurs` de **Spark NLP** et **Spark MLlib**. Ces outils prennent les données annotées (nettoyées) vues précédemment et appliquent des transformations pour générer des représentations vectorielles à l'aide de modèles tels que :
 
-##### **Modèle de Sac de Mots Statistique : TF-IDF avec et sans LSA**
+**Modèle de Sac de Mots Statistique : TF-IDF avec et sans LSA**
+Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. 
+Nous avons également testé **LSA (Latent Semantic Analysis)**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
 
-Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA (Latent Semantic Analysis)**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
-
-##### **Modèles Basés sur les Embeddings et Réseaux de Neurones Profonds**
-
+**Modèles Basés sur les Embeddings et Réseaux de Neurones Profonds**
 Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :
 
-## #### **Word Embeddings :**
+**Word Embeddings :**
 - **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.
 - **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
 
