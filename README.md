@@ -223,5 +223,42 @@ Les deux méthodes peuvent être complémentaires et se renforcer :
 Ces deux approches — **extraction des informations clés** et **résumé de texte** — sont très pertinentes pour votre projet. L'extraction des informations clés vous aide à organiser et structurer les données, tandis que le résumé de texte améliore la lisibilité et la compréhension générale des propositions. Ensemble, elles vous permettront d’offrir une analyse complète et efficace des contributions pour le projet "Grand Paris", tout en facilitant la prise de décisions basées sur des données textuelles volumineuses.
 
 
+--------------------------------
+
+### 1. Choix des métriques pour KMeans avec étiquettes connues
+
+Pour évaluer un modèle KMeans sur des données textuelles où vous avez des étiquettes connues, je recommanderais de choisir les deux métriques suivantes :
+
+- **Adjusted Rand Index (ARI)** :
+  - **Pourquoi** : L'ARI mesure la similarité entre les clusters prédits et les étiquettes réelles, en tenant compte des regroupements aléatoires. C'est une métrique robuste qui donne une bonne indication de la qualité du clustering par rapport à la vérité terrain.
+
+- **Adjusted Mutual Information (AMI)** :
+  - **Pourquoi** : L'AMI quantifie l'accord entre les clusters et les vérités de classe, tout en tenant compte de la taille des classes. Elle est également insensible à l'échelle et est particulièrement utile lorsque le nombre de classes varie.
+
+Ces deux métriques sont complémentaires et fournissent une évaluation complète de la performance du clustering par rapport aux étiquettes connues.
+
+### 2. Comparaison de plusieurs représentations vectorielles avec KMeans
+
+Lorsque vous souhaitez comparer plusieurs représentations vectorielles en utilisant KMeans, il est judicieux d'utiliser :
+
+- **Silhouette Score** :
+  - **Pourquoi** : Cette métrique vous permet d'évaluer la qualité de chaque cluster en fonction de la distance entre les points d'un même cluster et ceux des autres clusters. Un score élevé indique que les clusters sont bien séparés et compacts, ce qui est essentiel pour comparer différentes représentations.
+
+- **Davies-Bouldin Index** :
+  - **Pourquoi** : Cette métrique évalue la séparation entre les clusters par rapport à leur compacité. Un indice plus bas indique une meilleure qualité de clustering. Cela peut être particulièrement utile pour comparer différentes représentations vectorielles, car il prend en compte à la fois la distance inter-cluster et intra-cluster.
+
+En résumé, pour évaluer un modèle KMeans avec des étiquettes connues, l'ARI et l'AMI sont des choix pertinents. Pour comparer différentes représentations vectorielles, le Silhouette Score et le Davies-Bouldin Index sont recommandés pour obtenir une vue d'ensemble complète de la qualité du clustering.
+
+Citations:
+[1] https://blog.octo.com/sous-le-capot-des-bases-de-donnees-vectorielles-(vector-databases)
+[2] https://cedric.cnam.fr/vertigo/Cours/ml/coursClassificationAutomatique.html
+[3] https://www.data-transitionnumerique.com/k-means/
+[4] https://mrmint.fr/algorithme-k-means
+[5] https://www.codeandcortex.fr/analyse-textuelle-kmeans/
+[6] https://delladata.fr/kmeans/
+[7] https://fr.wikipedia.org/wiki/K-moyennes
+[8] https://www.ibm.com/docs/fr/db2/12.1?topic=building-k-means-clustering
+
+
 
 
