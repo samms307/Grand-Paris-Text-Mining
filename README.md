@@ -75,7 +75,48 @@ Pour ces modèles nous avons utilisé des **modèles pré-entraînés** spécifi
 
 ------------------------------
 
-### 2️ Représentation Vectorielle
+## 3️⃣ Application du Clustering et Évaluation des Représentations Vectorielles
+
+### 3.1 Clustering avec K-means
+
+Une fois les propositions d'idées transformées en **représentations vectorielles** via les modèles de vectorisation (TF-IDF, Word2Vec, BERT, USE), nous avons appliqué un algorithme de **clustering K-means** pour regrouper les propositions similaires. L'objectif était de déterminer quelle représentation vectorielle permettait d'obtenir les clusters les plus cohérents et significatifs.
+
+Le processus de clustering a consisté en :
+1. **Application de K-means** sur chaque représentation vectorielle.
+2. **Évaluation des résultats** en fonction des critères de cohésion et de séparation des clusters.
+
+### 3.2 Évaluation des Représentations Vectorielles
+
+Pour évaluer l'efficacité des différentes représentations vectorielles, nous avons comparé les résultats du clustering sur les différentes méthodes (TF-IDF, Word2Vec, BERT, USE) en utilisant plusieurs métriques d'évaluation :
+
+- **Silhouette Score** : Mesure la cohésion interne des clusters et la séparation entre les différents clusters. Des scores plus élevés indiquent une meilleure qualité de clustering.
+- **Davies-Bouldin Index** : Un indice plus faible suggère des clusters mieux séparés.
+- **Visualisation des clusters** : Nous avons utilisé des techniques de réduction de dimension telles que **t-SNE** pour visualiser les clusters dans un espace de dimension inférieure et interpréter graphiquement la séparation des propositions.
+
+
+--
+Application de KMeans et Comparaison des Représentations Vectorielles
+Étape 1 : Application du modèle KMeans
+Nous appliquons le modèle KMeans sur les différentes représentations vectorielles des mots (ou phrases) afin de regrouper les termes similaires en clusters. L’objectif est de tester quelle représentation vectorielle produit les clusters les plus cohérents et significatifs.
+
+Étape 2 : Évaluation des performances du clustering
+Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
+
+Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
+Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
+Étape 3 : Réduction de Dimension embedding words
+Après l’application de l'algorithme KMeans, une réduction de dimension est réalisée sur les embeddings des mots. Cette étape permet de simplifier la représentation des données, réduisant ainsi la complexité et le chevauchement possible des clusters ce qui facilite une meilleure interprétation des résultats.
+
+
+
+
+
+
+
+
+
+
+
 
 
 Contrairement aux annotateurs, les transformateurs sont souvent utilisés pour appliquer ou enregistrer des modèles entraînés ou pour combiner plusieurs étapes de traitement.
