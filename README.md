@@ -81,8 +81,9 @@ PySpark propose plusieurs méthodes de classification automatique supervisées e
 
 **L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produit les clusters les plus cohérents et significatifs. Pour ce faire** :  
 
-**3.1 Application du Modèle K-means || :**  Nous appliquons ce modéle sur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
+**3.1 Application du Modèle K-means || :** Nous appliquons ce modèle sur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes. Chaque cluster représente idéalement un groupe d’idées similaires correspondant à une thématique déjà connue.
 Le nombre de clusters a été fixé à **k = 5** en cohérence avec le nombre de thématiques identifiées dans nos données.  
+
 
 **3.2 Sélection de la Meilleure Représentation Vectorielle avec K-means**: Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
 - **Silhouette Score** : Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
@@ -97,113 +98,11 @@ Le nombre de clusters a été fixé à **k = 5** en cohérence avec le nombre de
 
 Ces analyses complémentaires ont permis de confirmer la qualité des clusters et de valider la pertinence de la représentation vectorielle choisie.
 
-88888888888888888888888888888888888
-- **Homogeneity Score** : Cette métrique mesure dans quelle mesure chaque cluster ne contient que des données appartenant à une seule thématique.  
-- **Adjusted Rand Index (ARI)** : Évalue la similarité entre les clusters générés et les thématiques attendues,en tenant compte des coïncidences dues au hasard.
-- 
-Ces analyses complémentaires ont permis de confirmer la qualité des clusters et de valider la pertinence de la représentation vectorielle choisie.
+----------------------
 
-- **Visualisation des clusters** : Nous avons utilisé des techniques de réduction de dimension telles que **t-SNE** pour visualiser les clusters dans un espace de dimension inférieure et interpréter graphiquement la séparation des propositions.
+### 4️⃣ Extraction des Termes Représentatifs par Cluster
 
-
-
------------
-**L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produisait les clusters les plus cohérents et significatifs** pour ce ce faire :
-
-- **3.1 Application du modèle KMeans||**
-Nous avons appliqué le modèle K-means sur les différentes représentations vectorielles (mots ou docs) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires. Le nombre de clusters a été fixé à k = 5 en cohérence avec le nombre de thématiques identifiées dans nos données.
-
-- **3.2 Évaluation des performances du clustering**
-Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
- - Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
- - Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
-
-nous avons appliqué un algorithme de **clustering K-means** pour regrouper les propositions similaires. L'objectif était de déterminer quelle représentation vectorielle permettait d'obtenir les clusters les plus cohérents et significatifs.
-
-L’objectif était d’évaluer quelle représentation vectorielle produisait les clusters les plus cohérents et significatifs.
-
-Les propositions d'idées ont été regroupées en clusters homogènes, chacun représentant une thématique ou un groupe d’idées similaires. Le nombre de clusters a été fixé à k = 5, en cohérence avec le nombre de thématiques identifiées dans nos données.
-
-
-
-- ### 3.1 classification automatique avec K-means
-
-
-
-Étape 1 : Application du modèle KMeans
-Nous appliquons le modèle KMeans sur les différentes représentations vectorielles des mots (ou phrases) afin de regrouper les termes similaires en clusters. L’objectif est de tester quelle représentation vectorielle produit les clusters les plus cohérents et significatifs.
-
-Étape 2 : Évaluation des performances du clustering
-Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
-
-Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
-Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
-
-
-Une fois les propositions d'idées transformées en **représentations vectorielles** via les modèles de vectorisation (TF-IDF, Word2Vec, BERT, USE), nous avons appliqué un algorithme de **clustering K-means** pour regrouper les propositions similaires. L'objectif était de déterminer quelle représentation vectorielle permettait d'obtenir les clusters les plus cohérents et significatifs.
-
-Le processus de clustering a consisté en :
-1. **Application de K-means** sur chaque représentation vectorielle.
-2. **Évaluation des résultats** en fonction des critères de cohésion et de séparation des clusters.
-
-### 3.2 Évaluation des Représentations Vectorielles
-
-Pour évaluer l'efficacité des différentes représentations vectorielles, nous avons comparé les résultats du clustering sur les différentes méthodes (TF-IDF, Word2Vec, BERT, USE) en utilisant plusieurs métriques d'évaluation :
-
-- **Silhouette Score** : Mesure la cohésion interne des clusters et la séparation entre les différents clusters. Des scores plus élevés indiquent une meilleure qualité de clustering.
-- **Davies-Bouldin Index** : Un indice plus faible suggère des clusters mieux séparés.
-- **Visualisation des clusters** : Nous avons utilisé des techniques de réduction de dimension telles que **t-SNE** pour visualiser les clusters dans un espace de dimension inférieure et interpréter graphiquement la séparation des propositions.
-
-
---
-Application de KMeans et Comparaison des Représentations Vectorielles
-Étape 1 : Application du modèle KMeans
-Nous appliquons le modèle KMeans sur les différentes représentations vectorielles des mots (ou phrases) afin de regrouper les termes similaires en clusters. L’objectif est de tester quelle représentation vectorielle produit les clusters les plus cohérents et significatifs.
-
-Étape 2 : Évaluation des performances du clustering
-Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
-
-Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
-Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
-Étape 3 : Réduction de Dimension embedding words
-Après l’application de l'algorithme KMeans, une réduction de dimension est réalisée sur les embeddings des mots. Cette étape permet de simplifier la représentation des données, réduisant ainsi la complexité et le chevauchement possible des clusters ce qui facilite une meilleure interprétation des résultats.
-
-
-
-
-
-
-
-
-
-
-
-
-
-Contrairement aux annotateurs, les transformateurs sont souvent utilisés pour appliquer ou enregistrer des modèles entraînés ou pour combiner plusieurs étapes de traitement.
-Ils opèrent sur des DataFrames et produisent également des DataFrames enrichis.
-Exemples de transformateurs :
-PipelineModel : Un pipeline complet contenant plusieurs étapes (annotateurs et transformateurs).
-EmbeddingsFinisher : Convertit des embeddings NLP en colonnes exploitables (par exemple, pour des modèles de machine learning).
-LightPipeline : Permet une exécution rapide et optimisée d'un pipeline complet sur des petits jeux de données ou des chaînes brutes.
-
-
-Après le prétraitement les données textuelles sont prêtes à être transformées en **vecteurs numériques**. Ces vecteurs permettent aux modèles de machine learning de traiter les textes sous une forme numérique.
-Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
-
-Le deuxième pipeline consiste à faire plusieurs représentations vectorielles des documents 
-utilisées en traitement de langage naturel pour représenter les documents sous forme de 
-vecteurs numériques. Plus précisément ces traitements se feront à l’aide de la bibliothèque
-SPARK NLP qui contient des fonctions de transformateurs afin de représenter notre variable 
-texte sous forme de vecteur numérique.
-
-
-
-Les techniques de représentation vectorielle utilisées sont les suivantes :
-
-- **TF-IDF** : Pondération des mots dans les propositions en fonction de leur fréquence et de leur importance relative dans le corpus.
-- **Word Embeddings** : Utilisation de modèles pré-entraînés comme **Word2Vec** et **BERT** pour représenter les mots sous forme de vecteurs dans un espace continu.
-- **Sentence Embeddings** : Utilisation de modèles comme **USE (Universal Sentence Encoder)** pour obtenir des représentations vectorielles des phrases entières.
+Une fois les propositions d'idées regroupées en clusters homogènes grâce à K-means, l'étape suivante consiste à extraire les termes les plus significatifs ou représentatifs pour chaque cluster. Voici comment cette extraction peut être réalisée :
 
 
 
