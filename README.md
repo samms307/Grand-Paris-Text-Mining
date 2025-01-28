@@ -77,16 +77,29 @@ Pour ces modèles nous avons utilisé des **modèles pré-entraînés** spécifi
 
 ### 3️⃣ Application d'une classification automatique et Évaluation des Représentations Vectorielles
 
-PySpark propose plusieurs méthodes de classification automatique supervisées et non supervisées (clustering). Dans ce projet nous avons choisi l’algorithme K-means pour sa simplicité d’implémentation et son efficacité. De plus PySpark utilise une version parallèle de K-means optimisée pour exploiter pleinement les capacités de traitement distribué. 
+PySpark propose plusieurs méthodes de classification automatique supervisées et non supervisées (clustering). Dans ce projet nous avons choisi l’algorithme K-means pour sa simplicité d’implémentation et son efficacité. De plus PySpark utilise une version `parallèle de K-means' optimisée pour exploiter pleinement les capacités de traitement distribué. 
 
-**L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produit les clusters les plus cohérents et significatifs**. Pour ce faire :  
+**L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produit les clusters les plus cohérents et significatifs. Pour ce faire** :  
 
-**3.1 Application du Modèle K-means :**  Nous appliquons ce modéle sur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
-Le nombre de clusters a été fixé à **k = 5**, en cohérence avec le nombre de thématiques identifiées dans nos données.  
+**3.1 Application du Modèle K-means || :**  Nous appliquons ce modéle sur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
+Le nombre de clusters a été fixé à **k = 5** en cohérence avec le nombre de thématiques identifiées dans nos données.  
 
-**3.2 Évaluation des Performances du Clustering :** Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
+**3.2 Sélection de la Meilleure Représentation Vectorielle avec K-means**: Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
 - **Silhouette Score** : Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
-- **Davies-Bouldin Index (DBI)** : Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).  
+- **Davies-Bouldin Index (DBI)** : Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).
+
+**3.3 Validation des Clusters et Analyse Thématique**: Une fois la meilleure représentation vectorielle identifiée à l’aide des métriques précédentes nous avons effectué une validation des clusters en analysant leur correspondance avec les thématiques connues :  
+
+- **Tableau de contingence** :  Nous avons construit un tableau de contingence entre les clusters générés par K-means et les thématiques préexistantes dans les données.  
+  - Cet outil permet de visualiser la correspondance entre les clusters et les thématiques, révélant leur cohérence et homogénéité.  
+
+- **Homogeneity Score** : Cette métrique mesure dans quelle mesure chaque cluster ne contient que des données appartenant à une seule thématique.  
+- **Adjusted Rand Index (ARI)** : Évalue la similarité entre les clusters générés et les thématiques attendues,en tenant compte des coïncidences dues au hasard.
+- 
+Ces analyses complémentaires ont permis de confirmer la qualité des clusters et de valider la pertinence de la représentation vectorielle choisie.
+
+- **Visualisation des clusters** : Nous avons utilisé des techniques de réduction de dimension telles que **t-SNE** pour visualiser les clusters dans un espace de dimension inférieure et interpréter graphiquement la séparation des propositions.
+
 
 
 -----------
