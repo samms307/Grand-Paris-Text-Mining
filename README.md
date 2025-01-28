@@ -22,7 +22,7 @@ Les propositions ont été collectées dans un jeu de données comprenant **362 
 L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus représentatifs pour chaque thématique. 
 
 
-### **Outils utilisés**
+## **Outils utilisés**
 - **PySpark** est une interface Python d'Apache Spark un framework open-source conçu pour le traitement distribué de grandes quantités de données. **Notre objectifs** :  
    - Manipuler et analyser des données à l'aide de Spark SQL et des DataFrames.  
    - Appliquer des algorithmes de machine learning via la bibliothèque MLlib.  
@@ -38,7 +38,31 @@ Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spar
 
 # 📈 **Étapes Clés du Projet**
 
-### **1️⃣ Prétraitement des Données et Contrôle du Data Leakage**
+### **1️⃣ Prétraitement des données textuelles**
+Pour préparer les données textuelles à la vectorisation nous avons utilisé la bibliothèque Spark NLP développée par John Snow Labs. Nous avons construit un `pipeline NLP composé de plusieurs annotateurs` dont le principal objectif est de nettoyer la variable texte avant la vectorisation. Les étapes principales incluent :
+
+Ainsi l’idée va être dans un premier temps de nettoyer nos textes dans nos données. Ensuite 
+nous transformerons nos textes en vecteur numérique afin qu’ils soient utilisables par des 
+algorithmes.
+Pour mettre en place l’ensemble de ce prétraitement, nous appliquons les opérations de 
+traitement du langage naturel (NLP) via à la bibliothèque SPARK NLP développée par John 
+Snow Labs NLP. Cela nous permettra de réaliser la normalisation, l’atomisation, la 
+suppression des mots inutiles, le retour à la racine des mots et enfin de représenter le texte 
+sous forme de vecteurs numériques en essayant différentes familles de modèles vectoriels 
+de texte afin de trouver la meilleure combinaison entre le bon modèle vectoriels de texte 
+adéquate par rapport aux données et une bonne méthode de classification automatique.
+L’enchainement de ces étapes se fera à l’aide de deux pipelines détaillés ci-dessous via la 
+bibliothèque SPARK NLP contenant soit des annotateurs ou/et soit des transformateurs. On 
+rappel un pipeline a pour but d'assembler plusieurs étapes qui peuvent être validées 
+ensemble tout en définissant différents paramètres
+
+- **Tokenisation** : Division des propositions en mots individuels.  
+- **Lemmatisation** : Réduction des mots à leur forme canonique.  
+- **Filtrage des stopwords** : Suppression des mots fréquents peu informatifs.  
+- **Nettoyage** : Élimination des caractères spéciaux et du bruit textuel.  
+
+Ces prétraitements ont permis de normaliser les données avant leur vectorisation avec des modèles comme **TF-IDF**, **BERT** et **USE**.
+
 
 Dans cette étape, l’objectif principal était de préparer les données et de garantir qu'aucune **fuite de données** (data leakage) ne se produise. Voici les actions effectuées :
 
