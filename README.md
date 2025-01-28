@@ -22,13 +22,12 @@ Les propositions ont été collectées dans un jeu de données comprenant **362 
 L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus représentatifs pour chaque thématique. 
 
 
-# **Étapes Méthodologiques**  
+##  **Étapes Méthodologiques**  
 
 ## 1. Exploration des techniques de vectorisation
-
 Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
 
-### **1.1 Modèle de sac de mots statistique : TF-IDF avec et sans LSA**  
+#### **1.1 Modèle de sac de mots statistique : TF-IDF avec et sans LSA**  
 Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
 
 ### **1.2 Modèles basés sur les embeddings et réseaux de neurones profonds**  
