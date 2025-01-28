@@ -81,19 +81,13 @@ PySpark propose plusieurs méthodes de classification automatique supervisées e
 
 **L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produit les clusters les plus cohérents et significatifs**. Pour ce faire :  
 
-**3.1 Application du Modèle K-means :**  Nous appliquons ce modélesur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
+**3.1 Application du Modèle K-means :**  Nous appliquons ce modéle sur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
 Le nombre de clusters a été fixé à **k = 5**, en cohérence avec le nombre de thématiques identifiées dans nos données.  
 
-**3.2 Évaluation des Performances du Clustering**  
-Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
+**3.2 Évaluation des Performances du Clustering :** Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
+- **Silhouette Score** : Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
+- **Davies-Bouldin Index (DBI)** : Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).  
 
-- **Silhouette Score** :  
-  Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
-  - Un **score élevé** indique des clusters bien compacts et séparés.  
-
-- **Davies-Bouldin Index (DBI)** :  
-  Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).  
-  - Un **indice plus faible** indique une meilleure qualité de clustering, facilitant ainsi la comparaison des différentes représentations vectorielles.  
 
 -----------
 **L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produisait les clusters les plus cohérents et significatifs** pour ce ce faire :
