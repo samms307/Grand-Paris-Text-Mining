@@ -19,7 +19,7 @@ Les propositions ont été collectées dans un jeu de données comprenant **362 
 
 
 # **Objectifs du Projet**
-L’objectif est d’appliquer une **classification automatique** sur le contenu des idées afin d’identifier les termes les plus représentatifs pour chaque thématique. 
+L’objectif du projet est de regrouper les propositions d’idées à l’aide d’une **classification automatique** puis d’identifier et d’extraire les termes ou phrases les plus représentatifs pour chaque thématique.
 
 
 ## **Outils utilisés**
