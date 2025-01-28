@@ -88,11 +88,16 @@ Le nombre de clusters a été fixé à **k = 5** en cohérence avec le nombre de
 - **Silhouette Score** : Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
 - **Davies-Bouldin Index (DBI)** : Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).
 
-**3.3 Validation des Clusters et Analyse Thématique**: Une fois la meilleure représentation vectorielle identifiée à l’aide des métriques précédentes nous avons effectué une validation des clusters en analysant leur correspondance avec les thématiques connues :  
 
-- **Tableau de contingence** :  Nous avons construit un tableau de contingence entre les clusters générés par K-means et les thématiques préexistantes dans les données.  
-  - Cet outil permet de visualiser la correspondance entre les clusters et les thématiques, révélant leur cohérence et homogénéité.  
+**3.3 Validation des Clusters et Analyse Thématique**: Une fois la meilleure représentation vectorielle identifiée à l’aide des métriques précédentes, nous avons effectué une validation des clusters en analysant leur correspondance avec les thématiques connues :  
 
+ - **Tableau de Contingence** : Nous avons construit un tableau de contingence entre les clusters générés par K-means et les thématiques préexistantes dans les données. Cet outil permet de visualiser la correspondance entre les clusters et les thématiques révélant leur cohérence et homogénéité.
+ - **Homogeneity Score** : Cette métrique mesure dans quelle mesure chaque cluster ne contient que des données appartenant à une seule thématique. Un score d'homogénéité élevé indique que les clusters sont bien séparés en termes de thématiques.
+ - **Adjusted Rand Index (ARI)** : Cette métrique évalue la similarité entre les clusters générés et les thématiques attendues en tenant compte des coïncidences dues au hasard. Un ARI élevé indique une meilleure correspondance entre les clusters et les thématiques.
+
+Ces analyses complémentaires ont permis de confirmer la qualité des clusters et de valider la pertinence de la représentation vectorielle choisie.
+
+88888888888888888888888888888888888
 - **Homogeneity Score** : Cette métrique mesure dans quelle mesure chaque cluster ne contient que des données appartenant à une seule thématique.  
 - **Adjusted Rand Index (ARI)** : Évalue la similarité entre les clusters générés et les thématiques attendues,en tenant compte des coïncidences dues au hasard.
 - 
