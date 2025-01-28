@@ -39,36 +39,111 @@ Bibliothèque de traitement automatique du langage naturel (NLP) basée sur Spar
 # 📈 **Étapes Clés du Projet**
 
 ### **1️⃣ Prétraitement des données textuelles**
-Pour préparer les données textuelles à la vectorisation nous avons utilisé la bibliothèque **Spark NLP** développée par **John Snow Labs**. Nous avons construit un `pipeline NLP composé de plusieurs annotateurs` dont le principal objectif est de nettoyer la variable texte avant la vectorisation.  
+Pour préparer les données textuelles à la vectorisation nous avons utilisé la bibliothèque **Spark NLP** développée par **John Snow Labs**. Nous avons construit un `pipeline NLP composé de plusieurs Annotators` dont le principal objectif est de nettoyer la variable texte avant la vectorisation.  
 **Les étapes principales incluent** :  
 
 - **Normalisation et Nettoyage** : Uniformiser le texte en transformant les mots en minuscules en supprimant les accents ainsi la ponctuation et les caractères spéciaux non pertinents pour l'analyse.  
 - **Tokenisation** : Découpage du texte en unités de base de mots dans notre cas.  
 - **Lemmatisation** : Réduction des mots à leur forme canonique ou racine (par exemple, "mangeant" devient "manger").  
 - **Correction orthographique (SpellChecker)** : Correction des fautes d'orthographe dans les textes. Nous avons enrichi cette étape avec un fichier texte personnalisé nommé `correction_mots` contenant des mots spécifiques à corriger.  
-- **Suppression des Stop Words** : Élimination des mots courants qui n'apportent pas de valeur sémantique significative. Cette étape a également été enrichie avec un fichier texte nommé `french`, contenant des mots supplémentaires à supprimer.  
+- **Suppression des Stop Words** : Élimination des mots courants qui n'apportent pas de valeur sémantique significative. Cette étape a également été enrichie avec un fichier texte nommé `french`, contenant des mots supplémentaires à supprimer.
+
+Ces étapes de prétraitement sont essentielles pour améliorer la qualité des données textuelles avant de les soumettre aux modèles de vectorisation.
+
+### 2️⃣ Représentation Vectorielle
+
+L'objectif ici est de transformer les propositions d'idées en données numériques, afin de pouvoir les représenter graphiquement ou les analyser avec des modèles de machine learning. Pour ce faire, nous utilisons les transformeurs de **Spark NLP** et **Spark MLlib**. Ces outils prennent les données annotées (nettoyées) vues précédemment et appliquent des transformations pour générer des représentations vectorielles à l'aide de modèles tels que :
+
+### **Modèle de Sac de Mots Statistique : TF-IDF avec et sans LSA**
+
+Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA (Latent Semantic Analysis)**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
+
+### **Modèles Basés sur les Embeddings et Réseaux de Neurones Profonds**
+
+Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :
+
+#### **Word Embeddings :**
+- **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.
+- **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
+
+#### **Document/Sentence Embeddings :**
+- **Agrégation par la moyenne des word embeddings** : Cette méthode calcule la moyenne des vecteurs des mots d'une proposition entière, offrant une représentation globale.
+- **USE (Universal Sentence Encoder)** : Génère des embeddings pour des phrases entières, capturant ainsi le sens global d'une proposition.
+
+------------------------------
+-----------------------------
+
+##  **Étapes Méthodologiques**  
+
+## 1. Exploration des techniques de vectorisation
+Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
+
+#### **1.1 Modèle de sac de mots statistique : TF-IDF avec et sans LSA**  
+Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
+
+### **1.2 Modèles basés sur les embeddings et réseaux de neurones profonds**  
+Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :  
+
+#### **Word Embeddings**  
+- **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.  
+- **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
+
+#### **Document/Sentence Embeddings**  
+- **Agrégation par la moyenne des word embeddings** : Cette méthode calcule la moyenne des vecteurs des mots d'une proposition entière, offrant une représentation globale.  
+- **USE (Universal Sentence Encoder)** : Génére des embeddings pour des phrases entières, capturant ainsi le sens global d'une proposition.
+
+
+## 2️⃣ Représentation Vectorielle
+
+L'objectif ici est de transformer les propositions d'idées en données numériques, afin de pouvoir les représenter graphiquement ou les analyser avec des modèles de machine learning. Pour ce faire, nous utilisons les transformeurs de **Spark NLP** et **Spark MLlib**. Ces outils prennent les données annotées (nettoyées) vues précédemment et appliquent des transformations pour générer des représentations vectorielles à l'aide de modèles tels que :
+
+### **Modèle de Sac de Mots Statistique : TF-IDF avec et sans LSA**
+
+Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA (Latent Semantic Analysis)**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
+
+### **Modèles Basés sur les Embeddings et Réseaux de Neurones Profonds**
+
+Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :
+
+#### **Word Embeddings :**
+- **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.
+- **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
+
+#### **Document/Sentence Embeddings :**
+- **Agrégation par la moyenne des word embeddings** : Cette méthode calcule la moyenne des vecteurs des mots d'une proposition entière, offrant une représentation globale.
+- **USE (Universal Sentence Encoder)** : Génère des embeddings pour des phrases entières, capturant ainsi le sens global d'une proposition.
 
 
 
 
 
 
-Dans cette étape, l’objectif principal était de préparer les données et de garantir qu'aucune **fuite de données** (data leakage) ne se produise. Voici les actions effectuées :
+Contrairement aux annotateurs, les transformateurs sont souvent utilisés pour appliquer ou enregistrer des modèles entraînés ou pour combiner plusieurs étapes de traitement.
+Ils opèrent sur des DataFrames et produisent également des DataFrames enrichis.
+Exemples de transformateurs :
+PipelineModel : Un pipeline complet contenant plusieurs étapes (annotateurs et transformateurs).
+EmbeddingsFinisher : Convertit des embeddings NLP en colonnes exploitables (par exemple, pour des modèles de machine learning).
+LightPipeline : Permet une exécution rapide et optimisée d'un pipeline complet sur des petits jeux de données ou des chaînes brutes.
 
-#### **Contrôle du Data Leakage :**
-- **Contamination des ensembles d’entraînement et de test :**  Le prétraitement a été effectué uniquement sur l'ensemble d'entraînement pour éviter que les données de test n'influencent le modèle. Ensuite, les mêmes transformations (nettoyage, encodage, équilibrage) ont été appliquées de manière identique sur les données de test, afin de garantir une évaluation impartiale du modèle.
-  
-- **Fuite de données (fuite cible) :**  Pour éviter ce risque, j’ai vérifié que les variables explicatives ne contiennent pas d’informations qui ne seraient pas disponibles lors de la prédiction. Cela inclut l’analyse des variables temporelles pour éviter l'inclusion de données futures, ainsi qu’une étude approfondie des relations entre les variables explicatives et la cible pour garantir la pertinence des variables sélectionnées.
 
-#### **Prétraitement des Données :**
-Résumé des étapes principales :
-- **Nettoyage des données** J'ai éliminé les doublons, géré les valeurs manquantes et les valeurs aberrantes ou atypiques. Puis géré les modalités et encodé les variables catégorielles.
- 
-- **Équilibrage des classes :**  Pour traiter l'imbalancement des classes, j'ai utilisé `SMOTE` (Synthetic Minority Over-sampling Technique) pour créer des exemples synthétiques de la classe minoritaire, équilibrant ainsi la distribution des classes dans les données.
-De plus, pour les modèles utilisés dans ce projet, j'ai intégré le `paramètre class_weight='balanced'`, ce qui permet d'ajuster automatiquement les poids des classes et d'assurer une meilleure prise en compte des classes minoritaires dans l'entraînement du modèle.
-  
+Après le prétraitement les données textuelles sont prêtes à être transformées en **vecteurs numériques**. Ces vecteurs permettent aux modèles de machine learning de traiter les textes sous une forme numérique.
+Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
 
-👉 **[ Voir plus de détails dans le notebook de prétraitement](https://github.com/samms307/scoring_client_api/blob/main/Final_pr%C3%A9traitement.ipynb)**
+Le deuxième pipeline consiste à faire plusieurs représentations vectorielles des documents 
+utilisées en traitement de langage naturel pour représenter les documents sous forme de 
+vecteurs numériques. Plus précisément ces traitements se feront à l’aide de la bibliothèque
+SPARK NLP qui contient des fonctions de transformateurs afin de représenter notre variable 
+texte sous forme de vecteur numérique.
+
+
+
+Les techniques de représentation vectorielle utilisées sont les suivantes :
+
+- **TF-IDF** : Pondération des mots dans les propositions en fonction de leur fréquence et de leur importance relative dans le corpus.
+- **Word Embeddings** : Utilisation de modèles pré-entraînés comme **Word2Vec** et **BERT** pour représenter les mots sous forme de vecteurs dans un espace continu.
+- **Sentence Embeddings** : Utilisation de modèles comme **USE (Universal Sentence Encoder)** pour obtenir des représentations vectorielles des phrases entières.
+
+
 
 
 
@@ -105,24 +180,7 @@ Pour assurer la performance continue du modèle en production, nous avons survei
 
 
 -------------------------------------------------------------------------------------------
-##  **Étapes Méthodologiques**  
 
-## 1. Exploration des techniques de vectorisation
-Nous avons exploré différentes méthodes pour transformer les propositions textuelles en vecteurs numériques exploitables pour le **clustering**. Parmi les techniques étudiées :
-
-#### **1.1 Modèle de sac de mots statistique : TF-IDF avec et sans LSA**  
-Le modèle **TF-IDF** a été utilisé pour pondérer les termes des propositions, mettant en avant les mots significatifs et réduisant l'impact des termes fréquents. Nous avons également testé **LSA**, qui permet de réduire la dimensionnalité tout en capturant les relations sémantiques entre les termes.
-
-### **1.2 Modèles basés sur les embeddings et réseaux de neurones profonds**  
-Pour ces modèles, nous avons utilisé des **modèles pré-entraînés** spécifiquement conçus pour le français. Nous avons exploré deux approches principales :  
-
-#### **Word Embeddings**  
-- **Word2Vec** : Utilisé pour générer des représentations vectorielles des mots, capturant leurs relations de similarité.  
-- **BERT** : Produit des **embeddings contextuels**, où la représentation des mots varie selon leur contexte dans une phrase.
-
-#### **Document/Sentence Embeddings**  
-- **Agrégation par la moyenne des word embeddings** : Cette méthode calcule la moyenne des vecteurs des mots d'une proposition entière, offrant une représentation globale.  
-- **USE (Universal Sentence Encoder)** : Génére des embeddings pour des phrases entières, capturant ainsi le sens global d'une proposition.
 
 
 
