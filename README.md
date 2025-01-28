@@ -75,9 +75,58 @@ Pour ces modèles nous avons utilisé des **modèles pré-entraînés** spécifi
 
 ------------------------------
 
-## 3️⃣ Application du Clustering et Évaluation des Représentations Vectorielles
+### 3️⃣ Application d'une classification automatique et Évaluation des Représentations Vectorielles
 
-### 3.1 Clustering avec K-means
+PySpark propose plusieurs méthodes de classification automatique supervisées et non supervisées (clustering). Dans ce projet nous avons choisi l’algorithme K-means pour sa simplicité d’implémentation et son efficacité. De plus PySpark utilise une version parallèle de K-means optimisée pour exploiter pleinement les capacités de traitement distribué. 
+
+**L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produit les clusters les plus cohérents et significatifs**. Pour ce faire :  
+
+**3.1 Application du Modèle K-means :**  Nous appliquons ce modélesur les différentes représentations vectorielles (mots ou documents) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires.  
+Le nombre de clusters a été fixé à **k = 5**, en cohérence avec le nombre de thématiques identifiées dans nos données.  
+
+**3.2 Évaluation des Performances du Clustering**  
+Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
+
+- **Silhouette Score** :  
+  Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
+  - Un **score élevé** indique des clusters bien compacts et séparés.  
+
+- **Davies-Bouldin Index (DBI)** :  
+  Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).  
+  - Un **indice plus faible** indique une meilleure qualité de clustering, facilitant ainsi la comparaison des différentes représentations vectorielles.  
+
+-----------
+**L’objectif principal de cette partie est d’évaluer quelle représentation vectorielle produisait les clusters les plus cohérents et significatifs** pour ce ce faire :
+
+- **3.1 Application du modèle KMeans||**
+Nous avons appliqué le modèle K-means sur les différentes représentations vectorielles (mots ou docs) afin de regrouper les propositions d'idées en clusters homogènes chacun représentant une thématique ou un groupe d’idées similaires. Le nombre de clusters a été fixé à k = 5 en cohérence avec le nombre de thématiques identifiées dans nos données.
+
+- **3.2 Évaluation des performances du clustering**
+Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
+ - Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
+ - Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
+
+nous avons appliqué un algorithme de **clustering K-means** pour regrouper les propositions similaires. L'objectif était de déterminer quelle représentation vectorielle permettait d'obtenir les clusters les plus cohérents et significatifs.
+
+L’objectif était d’évaluer quelle représentation vectorielle produisait les clusters les plus cohérents et significatifs.
+
+Les propositions d'idées ont été regroupées en clusters homogènes, chacun représentant une thématique ou un groupe d’idées similaires. Le nombre de clusters a été fixé à k = 5, en cohérence avec le nombre de thématiques identifiées dans nos données.
+
+
+
+- ### 3.1 classification automatique avec K-means
+
+
+
+Étape 1 : Application du modèle KMeans
+Nous appliquons le modèle KMeans sur les différentes représentations vectorielles des mots (ou phrases) afin de regrouper les termes similaires en clusters. L’objectif est de tester quelle représentation vectorielle produit les clusters les plus cohérents et significatifs.
+
+Étape 2 : Évaluation des performances du clustering
+Nous utilisons deux métriques pour évaluer la qualité des clusters formés par KMeans :
+
+Silhouette Score : Cette métrique mesure la compacité des clusters et la distance entre les clusters. Un score élevé indique de bons clusters bien compacte et séparés.
+Davies-Bouldin Index : Cet indice évalue la séparation et la compacité des clusters (inter-cluster et intra-cluster). Un indice plus faible indique une meilleure qualité de clustering, facilitant la comparaison des différentes représentations vectorielles.
+
 
 Une fois les propositions d'idées transformées en **représentations vectorielles** via les modèles de vectorisation (TF-IDF, Word2Vec, BERT, USE), nous avons appliqué un algorithme de **clustering K-means** pour regrouper les propositions similaires. L'objectif était de déterminer quelle représentation vectorielle permettait d'obtenir les clusters les plus cohérents et significatifs.
 
