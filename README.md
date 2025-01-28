@@ -1,4 +1,4 @@
-# **Analyse et Classification des Propositions pour la Métropole du Grand Paris**
+# **Classification des Propositions pour la Métropole du Grand Paris**
 
 ## **Contexte**
 Dans le cadre de la campagne *"Construisons la Métropole du Grand Paris"*, la **Direction de la Démocratie, des Citoyens et des Territoires (DDCT)** de la Ville de Paris a sollicité la participation des citoyens et collectivités. Ces derniers ont `soumis des idées innovantes` pour transformer la métropole en un espace plus connecté durable et inclusif. 
