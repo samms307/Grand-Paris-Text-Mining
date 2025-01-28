@@ -85,6 +85,7 @@ PySpark propose plusieurs méthodes de classification automatique supervisées e
 Le nombre de clusters a été fixé à **k = 5**, en cohérence avec le nombre de thématiques identifiées dans nos données.  
 
 **3.2 Évaluation des Performances du Clustering :** Nous utilisons deux métriques pour évaluer la qualité des clusters formés par K-means :  
+
 - **Silhouette Score** : Cette métrique mesure la **compacité** des clusters et la **distance entre eux**.  
 - **Davies-Bouldin Index (DBI)** : Cet indice évalue la **séparation** et la **compacité** des clusters (inter-cluster et intra-cluster).  
 
